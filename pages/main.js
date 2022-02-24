@@ -4,8 +4,6 @@ import { CustomPicker } from "react-color";
 
 export default function Main() {
   const [color, setColor] = useState("");
-  
-
 
   const onchangeColor = (e) => {
     const colorInput = document.querySelector("#colorInput");
