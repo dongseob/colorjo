@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useState, useRef } from "react";
-import * as calculate from "./calculate";
+import * as calculate from "../components/calculate";
 import { CustomPicker } from "react-color";
 
 export default function Main() {
