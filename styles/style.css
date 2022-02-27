@@ -1,3 +1,5 @@
+
+/* background.js css */
 .area{
     /* background: red !important;   */
     /* background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);   */
@@ -13,6 +15,7 @@
     height: 100%;
     overflow: hidden;
     z-index: -1;
+    background-color: #f5f5f5;
 }
 
 .circles li{
@@ -128,3 +131,13 @@
     }
 
 }
+
+
+
+
+
+
+
+
+
+

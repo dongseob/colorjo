@@ -4,6 +4,7 @@ import Header from "./header";
 import Footer from "./footer";
 import Main from "./main";
 import Background from "./background";
+import Generated from "./generated";
 
 export default function Home() {
   return (
@@ -14,9 +15,13 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header></Header>
+      <div className="h-screen flex flex-col">
+        <Header></Header>
+  
+        <Main></Main>
+      </div>
 
-      <Main></Main>
+      <Generated></Generated>
 
       <Footer></Footer>
       
