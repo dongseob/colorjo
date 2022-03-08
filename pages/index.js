@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { useState, useEffect } from 'react';
 
 import Header from "./header";
 import Footer from "./footer";
@@ -6,7 +7,52 @@ import Main from "./main";
 import Background from "./background";
 import Generated from "./generated";
 
+
 export default function Home() {
+  const [generated, setGenerated] = useState(false); //generate 상태유무
+  const [scrollY, setScrollY] = useState(0); //top button에 사용
+  const [topBtnStatus, setTopBtnStatus] = useState(false);
+
+  const handleFollow = () => {
+    setScrollY(window.pageYOffset); // window 스크롤 값을 ScrollY에 저장
+    if(scrollY > 300){
+      setTopBtnStatus(true);
+    }else{
+      setTopBtnStatus(false);
+    }
+  }
+
+  useEffect(() => {
+    const watch = () => {
+      window.addEventListener('scroll', handleFollow);
+    }
+    watch(); // addEventListener 함수를 실행
+    return () => {
+      window.removeEventListener('scroll', handleFollow); // addEventListener 함수를 삭제
+    }
+  });
+
+  //topBtn click function
+  const handleTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+    setScrollY(0); //scrollY 초기화
+    setTopBtnStatus(false);
+  }
+  
+  //generate click function
+  const generateClick = () => {
+    setGenerated(true);
+
+    const area = document.querySelector("#generatedArea");
+    area.style.display = "block";
+
+    //generateClick()이 끝나기전 스크롤이동 실행
+    window.scrollTo({top: 350, behavior:'smooth'});
+  }
+
   return (
     <div className="area">
       <Head>
@@ -15,15 +61,19 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="h-screen flex flex-col">
+      <div className="h-screen flex flex-col" id="mainArea">
         <Header></Header>
   
-        <Main></Main>
+        <Main generateClick={generateClick}></Main>
       </div>
 
-      <Generated></Generated>
+      <div id="generatedArea" style={{display: "none"}}>
+        <Generated></Generated>
+  
+        <Footer></Footer>
 
-      <Footer></Footer>
+        <button className={topBtnStatus ? "topBtn active bg-transparent hover:bg-indigo-500 text-indigo-700 font-semibold hover:text-white py-2 px-4 border border-indigo-600 hover:border-transparent rounded" : "topBtn"} onClick={handleTop}>top</button>
+      </div>
       
       <Background></Background>
     </div>
