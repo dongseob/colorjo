@@ -1,13 +1,28 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import * as Calculate from "../components/calculate";
 import { CustomPicker } from "react-color";
 
 export default function Main({generateClick}) {
-  const [color, setColor] = useState("");
+  const [colorValue, setColorValue] = useState("#000000");
 
+  
   const onchangeColor = (e) => {
-    const colorInput = document.querySelector("#colorInput");
-    const colorValue = e.target.value;
+    const colorInput = document.getElementById("colorInput");
+    setColorValue(e.target.value);
+  };
+
+
+  //최초에만 실행
+  useEffect(() => {
+    const colorInput = document.getElementById("colorInput");
+    colorInput.value = "#000000";
+  }, []);
+
+
+  //input의 값이 변경될때마다 실행
+  useEffect(() => {
+    console.log("input value : " + colorValue);
+
     if (colorValue.length == 7) {
       colorInput.style.backgroundColor = colorValue; //input영역을 입력한 색상코드로 변경
       var textColor = Calculate.black_white_check(colorValue); //return: white or black
@@ -17,19 +32,15 @@ export default function Main({generateClick}) {
       colorInput.style.backgroundColor = "white";
       colorInput.style.color = "black";
     }
-  };
+  }, [onchangeColor]);
 
-  useEffect(() => {
-    const colorInput = document.querySelector("#colorInput");
-    colorInput.value = "#000000";
-  });
-
+  
   const mainStyle = {
     transition: ".5s",
   };
 
   return (
-    <main className="pb-24 mx-auto max-w-7xl px-4 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-25 flex justify-center items-center my-auto mb-32 h-full">
+    <main className="pb-12 mx-auto max-w-7xl px-4 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-25 flex justify-center items-center my-auto mb-32 h-full">
       <div className="sm:text-center lg:text-left">
         <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
           <span className="text-center block">
@@ -48,13 +59,13 @@ export default function Main({generateClick}) {
             type="text"
             id="colorInput"
             style={mainStyle}
-            onFocus={() => console.log('focus in')}
-            onBlur={() => console.log('focus out')}
+            // onFocus={() => console.log('focus in')}
+            // onBlur={() => console.log('focus out')}
           />
           <button
             onClick={() => {
-              generateClick(); //index.js
-              Calculate.generated(); //calculate.js
+              generateClick(colorInput); //index.js
+              // Calculate.generated(); //calculate.js
             }}
             className="mt-5 bg-indigo-600 hover:bg-indigo-800 text-white w-64 mx-auto text-xl font-bold py-2 px-4 rounded-full"
           >
