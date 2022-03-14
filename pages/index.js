@@ -6,12 +6,15 @@ import Footer from "./footer";
 import Main from "./main";
 import Background from "./background";
 import Generated from "./generated";
+import * as Calculate from "../components/calculate";
 
 
 export default function Home() {
   const [generated, setGenerated] = useState(false); //generate 상태유무
   const [scrollY, setScrollY] = useState(0); //top button에 사용
   const [topBtnStatus, setTopBtnStatus] = useState(false);
+  const [colorValue, setColorValue] = useState("");
+  const [returnColor, setReturnColor] = useState("");
 
   const handleFollow = () => {
     setScrollY(window.pageYOffset); // window 스크롤 값을 ScrollY에 저장
@@ -23,6 +26,7 @@ export default function Home() {
   }
 
   useEffect(() => {
+
     const watch = () => {
       window.addEventListener('scroll', handleFollow);
     }
@@ -46,11 +50,14 @@ export default function Home() {
   const generateClick = () => {
     setGenerated(true);
 
+    setReturnColor(Calculate.generated(colorValue));
+    
+    //generated 영역이 생성
     const area = document.querySelector("#generatedArea");
     area.style.display = "block";
 
     //generateClick()이 끝나기전 스크롤이동 실행
-    window.scrollTo({top: 350, behavior:'smooth'});
+    window.scrollTo({top: 300, behavior:'smooth'});
   }
 
   return (
@@ -64,12 +71,12 @@ export default function Home() {
       <div className="h-screen flex flex-col" id="mainArea">
         <Header></Header>
   
-        <Main generateClick={generateClick}></Main>
+        <Main generateClick={generateClick} colorValue={colorValue} setColorValue={setColorValue}></Main>
       </div>
 
       <div id="generatedArea" style={{display: "none"}}>
-        <Generated></Generated>
-  
+        <Generated colorValue={colorValue} returnColor={returnColor}></Generated>
+        
         <Footer></Footer>
 
         <button className={topBtnStatus ? "topBtn active bg-transparent hover:bg-indigo-500 text-indigo-700 font-semibold hover:text-white py-2 px-4 border border-indigo-600 hover:border-transparent rounded" : "topBtn"} onClick={handleTop}>top</button>

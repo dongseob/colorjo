@@ -21,10 +21,10 @@ export function black_white_check(colorValue) {
 
 
 //generate button click function
-export function generated() {
-  
-  // const colorValue = document.querySelector("#colorInput").value;
-  const colorValue = "#eaddd2";
+export function generated(val) {
+  const colorValue = val;
+
+  alert(colorValue)
 
   const result = hex_to_rgb(colorValue);
   const rgb = result[0];
@@ -49,6 +49,10 @@ export function complementary_color(c, r, g, b) {
   let mg;
   let mb;
 
+  console.log("yogiyo2");
+  console.log(mr)
+  console.log(typeof(mr))
+
   if (r < 255) {
     mr = 255 - r;
   }
@@ -62,7 +66,6 @@ export function complementary_color(c, r, g, b) {
   const result_hex = rgb_to_hex(mr, mg, mb);
   // alert(c + " 의 보색은 " + result_hex + " 입니다.");
 
-  //yogiyo
   return result_hex;
 }
 
@@ -79,6 +82,11 @@ export function hex_to_rgb(colorValue){
 
 //조각난 r,g,b hex로 조합
 export function rgb_to_hex(mr, mg, mb) {
+
+  console.log("yogito")
+  console.log(mr)
+  console.log(typeof(mr))
+
   //다시 rgb 조합 (s = sum)
   const sr = mr.toString(16);
   const sg = mg.toString(16);

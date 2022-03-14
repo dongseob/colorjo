@@ -8,19 +8,27 @@ import React, { useRef, useEffect } from "react";
 import * as Calculate from "../components/calculate";
 import Main from "./main"
 
-export default function Generated() {
+export default function Generated(props) {
+
+  // console.log(props.colorValue)
 
   return (
-    <Result></Result>
+    <Result colorValue={props.colorValue} returnColor={props.returnColor}></Result>
   );
 }
 
 
-function Result(){
+function Result(props){
 
   const generatedStyle = {
     transition: ".5s",
   };
+
+  const generatedStyle2 = {
+    backgroundColor: "#" + props.returnColor,
+    boxShadow: "5px 3px 3px #666",
+    cursor: "pointer"
+  }
 
   //클릭 시, input의 값 select 
   const nameInput = useRef();
@@ -28,11 +36,6 @@ function Result(){
     nameInput.current.select();
   };
 
-  const return_color = "#" + Calculate.generated();
-
-  const generatedStyle2 = {
-    backgroundColor: return_color
-  }
 
   return(
     <div className="py-12">
@@ -47,12 +50,13 @@ function Result(){
                 className="h-32 w-32"
                 htmlFor="forColor"
                 style={generatedStyle2}
+                id={props.colorValue}
               ></label>
               <input
                 style={generatedStyle}
                 className="w-32 font-semibold py-2 px-4 text-center mt-3 p-9 text-lg shadow rounded-3xl appearance-none border text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 type="text"
-                value={return_color}
+                value={props.returnColor}
                 onFocus={inputFocus}
                 ref={nameInput}
                 id="forColor"

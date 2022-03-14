@@ -2,13 +2,12 @@ import { useEffect, useState } from "react";
 import * as Calculate from "../components/calculate";
 import { CustomPicker } from "react-color";
 
-export default function Main({generateClick}) {
-  const [colorValue, setColorValue] = useState("#000000");
-
+export default function Main(props) {
+  const {generateClick, propState} = props;
   
   const onchangeColor = (e) => {
-    const colorInput = document.getElementById("colorInput");
-    setColorValue(e.target.value);
+    // const colorInput = document.getElementById("colorInput");
+    props.setColorValue(e.target.value); //input에 값입력 마다 setColorValue에 할당
   };
 
 
@@ -21,11 +20,11 @@ export default function Main({generateClick}) {
 
   //input의 값이 변경될때마다 실행
   useEffect(() => {
-    console.log("input value : " + colorValue);
+    console.log("input value : " + props.colorValue);
 
-    if (colorValue.length == 7) {
-      colorInput.style.backgroundColor = colorValue; //input영역을 입력한 색상코드로 변경
-      var textColor = Calculate.black_white_check(colorValue); //return: white or black
+    if (props.colorValue.length == 7) {
+      colorInput.style.backgroundColor = props.colorValue; //input영역을 입력한 색상코드로 변경
+      var textColor = Calculate.black_white_check(props.colorValue); //return: white or black
       colorInput.style.color = textColor; //텍스트 색상 지정
     } else {
       //컬러 기본값으로 변경
@@ -65,7 +64,6 @@ export default function Main({generateClick}) {
           <button
             onClick={() => {
               generateClick(colorInput); //index.js
-              // Calculate.generated(); //calculate.js
             }}
             className="mt-5 bg-indigo-600 hover:bg-indigo-800 text-white w-64 mx-auto text-xl font-bold py-2 px-4 rounded-full"
           >
