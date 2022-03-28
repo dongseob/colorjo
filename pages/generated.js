@@ -2,15 +2,15 @@ import React, { useRef, useEffect } from "react";
 
 export default function Generated(props) {
   return (
-    <Result resultValue={props.resultValue?.opposite}></Result>
+    <Result resultValue={props.resultValue}></Result>
   )
 }
 
 
 function Result(props) {
-  useEffect(() => {
-    console.log("tt" , props)
-  })
+  // useEffect(() => {
+  //   console.log("tt" , props)
+  // })
 
   return (
     <div className="py-12">
@@ -20,7 +20,7 @@ function Result(props) {
             {props.resultValue?.opposite?.title}
           </p>
 
-          <ResultComponent resultValue={props.resultValue}></ResultComponent>
+          <ResultComponents resultValue={props.resultValue}></ResultComponents>
           
         </div>
       </div>
@@ -28,7 +28,7 @@ function Result(props) {
   );
 }
 
-function ResultComponent(props) {
+function ResultComponents(props) {
   const generatedStyle = {
     transition: ".5s",
   };
