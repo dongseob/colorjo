@@ -9,11 +9,11 @@ import Generated from "./generated";
 import * as Calculate from "../components/calculate";
 
 export default function Home() {
-  // const [generated, setGenerated] = useState(false); //generate 상태유무
+  // const [generated, setGenerated] = useState(false); //generate 상태유무 (not used)
   const [scrollY, setScrollY] = useState(0); //top button에 사용
   const [topBtnStatus, setTopBtnStatus] = useState(false); //top button에 사용
   const [colorValue, setColorValue] = useState(""); // 사용자가 입력한 헥스값
-  const [resultValue, setResultValue] = useState({});
+  const [resultValue, setResultValue] = useState([]);
 
   const handleFollow = () => {
     setScrollY(window.pageYOffset); // window 스크롤 값을 ScrollY에 저장
@@ -46,12 +46,8 @@ export default function Home() {
 
   //generate click function
   const generateClick = (colorInput) => {
-    // setGenerated(true);
-
-    //yogiyo 구현목록
-    // * type (ex. opposite, gradient, etc..) = array for(type)
-    // * component { array [color count], generated(); }
-    // * return type, component 배열만큼 생성
+    //중복 렌더링 방지로 배열 초기화 작업
+    setResultValue([]);
 
     Calculate.generated(colorValue, resultValue, setResultValue);
 
@@ -74,12 +70,7 @@ export default function Home() {
 
   //resultValue의 동기 진행
   useEffect(() => {
-    console.log("result value : " , resultValue);
-
-    // resultValue.opposite && console.log("yogiyo a : " , resultValue.opposite);
-    // resultValue.opposite && console.log("yogiyo b : " , resultValue.opposite.value);
-    // resultValue.opposite && console.log("yogiyo c : " , resultValue.opposite.value.bb);
-    // resultValue.opposite && console.log("yogiyo d : " , resultValue.opposite.value.bb.cc);
+    // console.log("result value : " , resultValue); //테스트 용도
   }, [resultValue]);
 
   return (

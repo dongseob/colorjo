@@ -6,7 +6,6 @@ export default function Main(props) {
   const {generateClick, propState} = props;
   
   const onchangeColor = (e) => {
-    // const colorInput = document.getElementById("colorInput");
     props.setColorValue(e.target.value); //input에 값입력 마다 setColorValue에 할당
   };
 
@@ -21,8 +20,6 @@ export default function Main(props) {
 
   //input의 값이 변경될때마다 실행
   useEffect(() => {
-    console.log("input value : " + props.colorValue);
-
     if (props.colorValue.length == 7) {
       colorInput.style.backgroundColor = props.colorValue; //input영역을 입력한 색상코드로 변경
       var textColor = Calculate.black_white_check(props.colorValue); //return: white or black
@@ -61,9 +58,6 @@ export default function Main(props) {
             id="colorInput"
             style={mainStyle}
             maxLength="7"
-            // placeholder="#000000"
-            // onFocus={() => console.log('focus in')}
-            // onBlur={() => console.log('focus out')}
           />
           <button
             onClick={() => {

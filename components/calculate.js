@@ -19,7 +19,6 @@ export function black_white_check(colorValue) {
 
 //generate button click function
 export function generated(colorValue, resultValue, setResultValue) {
-
   const result = hex_to_rgb(colorValue);
   const rgb = result[0];
   const c = result[1];
@@ -27,14 +26,14 @@ export function generated(colorValue, resultValue, setResultValue) {
   const r = (rgb >> 16) & 0xff; // red 추출
   const g = (rgb >> 8) & 0xff; // green 추출
   const b = (rgb >> 0) & 0xff; // blue 추출
-
-  const result_hex = opposite_color(c, r, g, b, resultValue, setResultValue); //보색 구하기
-
+  
+  const result_hex = opposite_color(c, r, g, b, colorValue, resultValue, setResultValue); //보색 구하기
+  
   return result_hex;
 }
 
 //보색 구하기 rgb체계에서 서로 보색인 색을 섞으면 흰색이 된다.
-export function opposite_color(c, r, g, b, resultValue, setResultValue) {
+export function opposite_color(c, r, g, b, colorValue, resultValue, setResultValue) {
   //m = minus
   let mr;
   let mg;
@@ -50,28 +49,15 @@ export function opposite_color(c, r, g, b, resultValue, setResultValue) {
     mb = 255 - b;
   }
 
-  const result_hex = rgb_to_hex(mr, mg, mb);
+  const result_hex = "#" + rgb_to_hex(mr, mg, mb);
 
-  setResultValue({
+  setResultValue((resultValue) => [
     ...resultValue,
-    opposite: {
-      title: "Oppsite Color",
-      count: 1,
-      value: {
-        aa: "#" + result_hex
-      }
-    },
-    
-    //yogiyo
-    opposite2: {
-      title: "Oppsite Color2",
-      count: 2,
-      value: {
-        aa: "#" + result_hex,
-        bb: "#" + result_hex
-      }
+    {
+      title: "Opposite Color",
+      value: [colorValue, result_hex]
     }
-  });
+  ]);
 }
 
 export function hex_to_rgb(colorValue) {
@@ -89,6 +75,5 @@ export function rgb_to_hex(mr, mg, mb) {
   const sb = mb.toString(16);
 
   const result_hex = sr + sg + sb; //보색의 hex값
-  // console.log("sum_hex_value : " + sum_hex_value);
   return result_hex;
 }
