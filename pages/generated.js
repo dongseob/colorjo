@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { render } from "react-dom";
+import { useState } from "react/cjs/react.production.min";
 import * as Calculate from "../components/calculate"; //your color의 텍스트 색상변경 용도
 
 export default function Generated(props) {
@@ -52,24 +53,27 @@ function Result(props) {
 
 function ResultComponents(props) {
   //클릭 시, input의 값 select
-  const nameInput = useRef();
-  const inputFocus = () => {
-    nameInput.current.select();
+  const nameInput = useRef([]);
+  const inputFocus = (index) => {
+    nameInput.current[index]?.select();
   };
 
-  var textColor = Calculate.black_white_check(props.colorValue); //return: white or black
+  let textColor = Calculate.black_white_check(props.colorValue); //return: white or black
 
-  const yourColor = {
+  let yourColor = {
     position: "absolute",
     left: "50%",
     transform: "translateX(-50%)",
     zIndex: "999",
-    color: textColor,
+    // color: textColor,
     top: "25%",
     textAlign: "center",
     fontWeight: "bold",
-
   }
+
+  useEffect(() => {
+    
+  }, [props.resultValue]);
 
   const resultRender = props.renderValue.map((result, index) => 
     <div key={result}>
@@ -77,7 +81,7 @@ function ResultComponents(props) {
         <div className="flex flex-col mx-4 test">
           <label
             className="h-32 w-32 shadow-xl cursor-pointer"
-            htmlFor="forColor"
+            htmlFor={"forColor"+index}
             style={{ backgroundColor: result, position: "relative" }}
           >
             {index === 0 ? <div style={yourColor} className="text-lg break-words">Your Color</div> : null}
@@ -86,16 +90,14 @@ function ResultComponents(props) {
             className="w-32 font-semibold py-2 px-4 text-center mt-3 p-9 text-lg shadow rounded-3xl appearance-none border text-gray-700 leading-tight focus:outline-none focus:shadow-outline ease-in-out duration-500"
             type="text"
             value={result}
-            onFocus={inputFocus}
-            ref={nameInput}
-            id="forColor"
+            onFocus={() => inputFocus(index)}
+            ref={ (el) => (nameInput.current[index] = el) }
+            id={"forColor"+index}
             readOnly
           />
         </div>
       </div>
     </div>
-
-    
   )
 
   return (
