@@ -23,7 +23,7 @@ function Result(props) {
   }, [props.resultValue]);
 
   const resultRender = props.resultValue.map(result => 
-    <div key={result.count}>
+    <div key={result}>
       <div className="py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="lg:text-center">
@@ -37,6 +37,8 @@ function Result(props) {
                 colorValue={props.colorValue}
               ></ResultComponents>
             </div>
+
+            <h1>{result.value}</h1>
           </div>
         </div>
       </div>
@@ -71,11 +73,7 @@ function ResultComponents(props) {
     fontWeight: "bold",
   }
 
-  useEffect(() => {
-    
-  }, [props.resultValue]);
-
-  const resultRender = props.renderValue.map((result, index) => 
+  const resultRender2 = props.renderValue.map((result, index) => 
     <div key={result}>
       <div className="flex justify-center mt-4 text-xl text-gray-500 lg:mx-auto">
         <div className="flex flex-col mx-4 test">
@@ -102,7 +100,7 @@ function ResultComponents(props) {
 
   return (
     <>
-      {resultRender}
+      {resultRender2}
     </>
   );
 }
