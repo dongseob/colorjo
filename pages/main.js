@@ -4,7 +4,6 @@ import { CustomPicker } from "react-color";
 
 export default function Main(props) {
   const {generateClick, propState} = props;
-  
   const onchangeColor = (e) => {
     props.setColorValue(e.target.value); //input에 값입력 마다 setColorValue에 할당
   };
@@ -15,7 +14,7 @@ export default function Main(props) {
     const colorInput = document.getElementById("colorInput");
     colorInput.value = "#000000";
     props.setColorValue("#000000");
-  }, []);
+  });
 
 
   //input의 값이 변경될때마다 실행

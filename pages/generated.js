@@ -7,6 +7,7 @@ export default function Generated(props) {
   return <Result resultValue={props.resultValue} colorValue={props.colorValue}></Result>;
 }
 
+
 function Result(props) {
   useEffect(() => {
     console.log("전체객체 : " , props.resultValue);
@@ -37,8 +38,6 @@ function Result(props) {
                 colorValue={props.colorValue}
               ></ResultComponents>
             </div>
-
-            <h1>{result.value}</h1>
           </div>
         </div>
       </div>
