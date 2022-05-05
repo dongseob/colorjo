@@ -10,20 +10,13 @@ export default function Generated(props) {
 
 function Result(props) {
   useEffect(() => {
-    console.log("전체객체 : " , props.resultValue);
-    console.log("test : " , props.resultValue[0]?.value)
-    // console.log("객체의 길이 : " , Object.keys(props.resultValue || {}).length);
-    // console.log("첫번째 객체의 key : " , Object.keys(props.resultValue)[0]);
-    // console.log("첫번째 객체의 value : " , props.resultValue[Object.keys(props.resultValue)[0]]);
-    // console.log("첫번째 값 : " , props.resultValue.opposite?.title);
-    // console.log("두번째 값 : " , props.resultValue.opposite?.count);
-    // console.log("세번째 값 : " , props.resultValue.opposite?.value);
-    // console.log("세번째의 첫번째 값 : " , props.resultValue.opposite?.value?.aa);
-    // console.log("세번째의 두번째 값 : " , props.resultValue.opposite?.value?.bb);
-    
+    console.log("resultValue : " , props.resultValue);
+    console.log("resultValue[0] : " , props.resultValue[0]?.value);
   }, [props.resultValue]);
 
-  const resultRender = props.resultValue.map(result => 
+
+  if(!props.resultValue) return null; //resultValue가 안들어와서 예외처리
+  const resultRender = props.resultValue.map((result) => 
     <div key={result}>
       <div className="py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -33,7 +26,7 @@ function Result(props) {
             </p>
             <div className="flex justify-center">
               <ResultComponents
-                resultValue={props.resultValue}
+                // resultValue={props.resultValue}
                 renderValue={result.value}
                 colorValue={props.colorValue}
               ></ResultComponents>
@@ -42,7 +35,6 @@ function Result(props) {
         </div>
       </div>
     </div>
-
   )
 
   return (
@@ -72,7 +64,7 @@ function ResultComponents(props) {
     fontWeight: "bold",
   }
 
-  const resultRender2 = props.renderValue.map((result, index) => 
+  const resultRender = props.renderValue.map((result, index) => 
     <div key={result}>
       <div className="flex justify-center mt-4 text-xl text-gray-500 lg:mx-auto">
         <div className="flex flex-col mx-4 test">
@@ -99,7 +91,7 @@ function ResultComponents(props) {
 
   return (
     <>
-      {resultRender2}
+      {resultRender}
     </>
   );
 }

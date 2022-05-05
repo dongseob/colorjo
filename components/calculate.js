@@ -54,7 +54,7 @@ export function opposite_color(c, r, g, b, colorValue, resultValue, setResultVal
   setResultValue((resultValue) => [
     ...resultValue,
     {
-      title: "Opposite Color",
+      title: ["Opposite Color"],
       value: [colorValue, result_hex]
     }
   ]);
