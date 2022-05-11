@@ -14,7 +14,7 @@ export default function Main(props) {
     const colorInput = document.getElementById("colorInput");
     colorInput.value = "#000000";
     props.setColorValue("#000000");
-  });
+  },[]);
 
 
   //input의 값이 변경될때마다 실행
