@@ -89,7 +89,6 @@ export function similar_color(
       similar1_h = 0;
     }
     similar1_h++;
-    console.log(similar1_h);
   }
 
   for (let i = 0; i < 5; i++) {
@@ -224,6 +223,24 @@ export function opposite_color(
     },
   ]);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //convert들은 가시성때문에 떨어트려놈
 export function hsl_to_rgb(h, s, l) {

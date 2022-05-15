@@ -11,13 +11,13 @@ export default function Generated(props) {
 function Result(props) {
   useEffect(() => {
     console.log("resultValue : " , props.resultValue);
-    console.log("resultValue[0] : " , props.resultValue[0]?.value);
+    // console.log("resultValue[0] : " , props.resultValue[0]?.value);
   }, [props.resultValue]);
 
 
   if(!props.resultValue) return null; //resultValue가 안들어와서 예외처리
   const resultRender = props.resultValue.map((result) => 
-    <div key={result}>
+    <div key={result.value}>
       <div className="py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="lg:text-center">
@@ -65,7 +65,7 @@ function ResultComponents(props) {
   }
 
   const resultRender = props.renderValue.map((result, index) => 
-    <div key={result}>
+    <div key={index.toString()}>
       <div className="flex justify-center mt-4 text-xl text-gray-500 lg:mx-auto">
         <div className="flex flex-col mx-4 test">
           <label
