@@ -203,13 +203,13 @@ export function opposite_color(
   let mg;
   let mb;
 
-  if (r < 255) {
+  if (r < 256) {
     mr = 255 - r;
   }
-  if (g < 255) {
+  if (g < 256) {
     mg = 255 - g;
   }
-  if (b < 255) {
+  if (b < 256) {
     mb = 255 - b;
   }
 

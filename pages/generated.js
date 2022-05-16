@@ -45,12 +45,6 @@ function Result(props) {
 }
 
 function ResultComponents(props) {
-  //클릭 시, input의 값 select
-  const nameInput = useRef([]);
-  const inputFocus = (index) => {
-    nameInput.current[index]?.select();
-  };
-
   let textColor = Calculate.black_white_check(props.colorValue); //return: white or black
 
   let yourColor = {
@@ -79,8 +73,6 @@ function ResultComponents(props) {
             className="w-32 font-semibold py-2 px-4 text-center mt-3 p-9 text-lg shadow rounded-3xl appearance-none border text-gray-700 leading-tight focus:outline-none focus:shadow-outline ease-in-out duration-500"
             type="text"
             value={result}
-            onFocus={() => inputFocus(index)}
-            ref={ (el) => (nameInput.current[index] = el) }
             id={"forColor"+index}
             readOnly
           />
