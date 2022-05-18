@@ -60,9 +60,10 @@ function ResultComponents(props) {
 
   const resultRender = props.renderValue.map((result, index) => 
     <div key={index.toString()}>
-      <div className="flex justify-center mt-4 text-xl text-gray-500 lg:mx-auto">
+      <div className="flex justify-center mt-4 text-xl text-gray-500 lg:mx-auto md:grid-cols-2 lg:grid-cols-4 gap-6">
         <div className="flex flex-col mx-4 test">
           <label
+            title={result}
             className="h-32 w-32 shadow-xl cursor-pointer"
             htmlFor={"forColor"+index}
             style={{ backgroundColor: result, position: "relative" }}

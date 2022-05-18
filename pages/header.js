@@ -3,52 +3,53 @@ import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon, HashtagIcon } from "@heroicons/react/outline";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 
-const solutions = [
-  {
-    name: "menu1",
-    description:
-      "Get a better understanding of where your traffic is coming from.",
-    href: "#",
-    icon: HashtagIcon,
-  },
-  {
-    name: "menu2",
-    description:
-      "Get a better understanding of where your traffic is coming from.",
-    href: "#",
-    icon: HashtagIcon,
-  },
-  {
-    name: "menu3",
-    description:
-      "Get a better understanding of where your traffic is coming from.",
-    href: "#",
-    icon: HashtagIcon,
-  },
-];
+// const solutions = [
+//   {
+//     name: "menu1",
+//     description:
+//       "Get a better understanding of where your traffic is coming from.",
+//     href: "#",
+//     icon: HashtagIcon,
+//   },
+//   {
+//     name: "menu2",
+//     description:
+//       "Get a better understanding of where your traffic is coming from.",
+//     href: "#",
+//     icon: HashtagIcon,
+//   },
+//   {
+//     name: "menu3",
+//     description:
+//       "Get a better understanding of where your traffic is coming from.",
+//     href: "#",
+//     icon: HashtagIcon,
+//   },
+// ];
 
 export default function Example() {
   return (
     <Popover className="relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
+        <div className="flex justify-between items-center py-6 md:justify-start md:space-x-10">
           <div className="flex justify-start lg:w-0 lg:flex-1">
-            <a href="#">
-              <span className="sr-only">Workflow</span>
+            <a href="#" className="flex flex-row">
+              <span className="sr-only">colorjo</span>
               <img
                 className="h-8 w-auto sm:h-10"
-                src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-                alt=""
+                src="/colorjo.png"
+                alt="logo"
               />
+              <p className="text-indigo-600 tracking-tight font-extrabold sm:text-xl md:text-1xl ml-2 mt-1">colorjo</p>
             </a>
           </div>
-          <div className="-mr-2 -my-2 md:hidden">
+          {/* <div className="-mr-2 -my-2 md:hidden">
             <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
               <span className="sr-only">Open menu</span>
               <MenuIcon className="h-6 w-6" aria-hidden="true" />
             </Popover.Button>
-          </div>
-          <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
+          </div> */}
+          {/* <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
             <a
               href="#"
               className="ml-5 whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
@@ -67,11 +68,11 @@ export default function Example() {
             >
               menu3
             </a>
-          </div>
+          </div> */}
         </div>
       </div>
 
-      <Transition
+      {/* <Transition
         as={Fragment}
         enter="duration-200 ease-out"
         enterFrom="opacity-0 scale-95"
@@ -123,7 +124,7 @@ export default function Example() {
             </div>
           </div>
         </Popover.Panel>
-      </Transition>
+      </Transition> */}
     </Popover>
   );
 }

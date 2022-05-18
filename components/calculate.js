@@ -83,19 +83,25 @@ export function similar_color(
 
   //각 값 연산
   //각 값의 최소값과 최대값의 범위를 벗어났을때
-  //similar1
-  for (let i = 0; i < 6; i++) {
+  //similar1 (+6, 5, -9)
+  for (let i = 0; i < 7; i++) {
     if (similar1_h > 360) {
       similar1_h = 0;
     }
     similar1_h++;
   }
-
-  for (let i = 0; i < 5; i++) {
-    if (similar1_s > 100) {
-      similar1_s = 0;
+  //채도는 0~100 을 넘지 않도록 조절
+  if(similar1_s > 95){
+    for (let i = 0; i < 5; i++) {
+      similar1_s--;
     }
-    similar1_s++;
+  }else{
+    for (let i = 0; i < 5; i++) {
+      if (similar1_s > 100) {
+        similar1_s = 0;
+      }
+      similar1_s++;
+    }
   }
   for (let i = 0; i < 9; i++) {
     if (similar1_l < 0) {
@@ -104,18 +110,25 @@ export function similar_color(
     similar1_l--;
   }
 
-  //similar2
-  for (let i = 0; i < 6; i++) {
+  //similar2 (-6, 5, -9)
+  for (let i = 0; i < 7; i++) {
     if (similar2_h < 0) {
       similar2_h = 360;
     }
     similar2_h--;
   }
-  for (let i = 0; i < 5; i++) {
-    if (similar2_s > 100) {
-      similar2_s = 0;
+  //채도는 0~100 을 넘지 않도록 조절
+  if(similar2_s > 95){
+    for (let i = 0; i < 5; i++) {
+      similar2_s--;
     }
-    similar2_s++;
+  }else{
+    for (let i = 0; i < 5; i++) {
+      if (similar2_s > 100) {
+        similar2_s = 0;
+      }
+      similar2_s++;
+    }
   }
   for (let i = 0; i < 9; i++) {
     if (similar2_l < 0) {
@@ -124,40 +137,54 @@ export function similar_color(
     similar2_l--;
   }
 
-  //similar3
-  for (let i = 0; i < 12; i++) {
+  //similar3 (+12, 5, +4)
+  for (let i = 0; i < 14; i++) {
     if (similar3_h > 360) {
       similar3_h = 0;
     }
     similar3_h++;
   }
-  for (let i = 0; i < 5; i++) {
-    if (similar3_s > 100) {
-      similar3_s = 0;
+  //채도는 0~100 을 넘지 않도록 조절
+  if(similar3_s > 95){
+    for (let i = 0; i < 5; i++) {
+      similar3_s--;
     }
-    similar3_s++;
+  }else{
+    for (let i = 0; i < 5; i++) {
+      if (similar3_s > 100) {
+        similar3_s = 0;
+      }
+      similar3_s++;
+    }
   }
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < 4; i++) {
     if (similar3_l > 100) {
       similar3_l = 0;
     }
     similar3_l++;
   }
 
-  //similar4
-  for (let i = 0; i < 12; i++) {
+  //similar4 (-12, 5, +4)
+  for (let i = 0; i < 14; i++) {
     if (similar4_h < 0) {
       similar4_h = 360;
     }
     similar4_h--;
   }
-  for (let i = 0; i < 5; i++) {
-    if (similar4_s > 100) {
-      similar4_s = 0;
+  //채도는 0~100 을 넘지 않도록 조절
+  if(similar4_s > 95){
+    for (let i = 0; i < 5; i++) {
+      similar4_s--;
     }
-    similar4_s++;
+  }else{
+    for (let i = 0; i < 5; i++) {
+      if (similar4_s > 100) {
+        similar4_s = 0;
+      }
+      similar4_s++;
+    }
   }
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < 4; i++) {
     if (similar4_l > 100) {
       similar4_l = 0;
     }
