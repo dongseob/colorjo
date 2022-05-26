@@ -130,7 +130,7 @@ export function similar_color(
       similar2_s++;
     }
   }
-  for (let i = 0; i < 9; i++) {
+  for (let i = 0; i < 4; i++) {
     if (similar2_l < 0) {
       similar2_l = 100;
     }
@@ -157,7 +157,7 @@ export function similar_color(
       similar3_s++;
     }
   }
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < 9; i++) {
     if (similar3_l > 100) {
       similar3_l = 0;
     }

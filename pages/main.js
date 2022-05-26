@@ -35,6 +35,12 @@ export default function Main(props) {
     transition: ".5s",
   };
 
+  const testOn = e => {
+    if(e.key === "Enter"){
+      generateClick();
+    }
+  }
+
 
   return (
     <main className="pb-12 mx-auto max-w-7xl px-4 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-25 flex justify-center items-center my-auto mb-32 h-full">
@@ -57,6 +63,7 @@ export default function Main(props) {
             id="colorInput"
             style={mainStyle}
             maxLength="7"
+            onKeyDown={testOn}
           />
           <button
             onClick={() => {

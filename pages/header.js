@@ -40,7 +40,7 @@ export default function Example() {
                 src="/colorjo.png"
                 alt="logo"
               />
-              <p className="text-indigo-600 tracking-tight font-extrabold sm:text-xl md:text-1xl ml-2 mt-1">colorjo</p>
+              {/* <p className="text-indigo-600 tracking-tight font-extrabold sm:text-xl md:text-1xl ml-2 mt-1">colorjo</p> */}
             </a>
           </div>
           {/* <div className="-mr-2 -my-2 md:hidden">

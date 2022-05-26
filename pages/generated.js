@@ -24,7 +24,7 @@ function Result(props) {
             <p className="text-center mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
               {result.title}
             </p>
-            <div className="flex justify-center">
+            <div className="flex justify-center flex-wrap">
               <ResultComponents
                 // resultValue={props.resultValue}
                 renderValue={result.value}
@@ -64,14 +64,14 @@ function ResultComponents(props) {
         <div className="flex flex-col mx-4 test">
           <label
             title={result}
-            className="h-32 w-32 shadow-xl cursor-pointer"
+            className="shadow-xl cursor-pointer h-24 w-24 m-4 md:h-32 md:w-32"
             htmlFor={"forColor"+index}
             style={{ backgroundColor: result, position: "relative" }}
           >
             {index === 0 ? <div style={yourColor} className="text-lg break-words">Your Color</div> : null}
           </label>
           <input
-            className="w-32 font-semibold py-2 px-4 text-center mt-3 p-9 text-lg shadow rounded-3xl appearance-none border text-gray-700 leading-tight focus:outline-none focus:shadow-outline ease-in-out duration-500"
+            className="mx-auto w-32 font-semibold py-2 px-4 text-center mt-3 p-9 text-lg shadow rounded-3xl appearance-none border text-gray-700 leading-tight focus:outline-none focus:shadow-outline ease-in-out duration-500"
             type="text"
             value={result}
             id={"forColor"+index}
