@@ -1,21 +1,25 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import * as Calculate from "../components/calculate";
-import { CustomPicker } from "react-color";
+import { ChromePicker } from "react-color"; // React Color (input용도)
+import { AlphaPicker } from "react-color"; // React Color (input용도)
 
 export default function Main(props) {
-  const {generateClick, propState} = props;
-  const onchangeColor = (e) => {
-    props.setColorValue(e.target.value); //input에 값입력 마다 setColorValue에 할당
-  };
+  const { generateClick, propState } = props;
+  const [pickerShow, setPickerShow] = useState(false); //input click 시, color picker visible
+  const [pickerColor, setPickerColor] = useState({background: '#000'});
 
+  //input에 값입력 마다 setColorValue에 할당
+  const onchangeColor = (e) => {
+    props.setColorValue(e.target.value);
+    setPickerColor({ background: e.target.value }); //picker도 같이 변경
+  };
 
   //최초에만 실행
   useEffect(() => {
     const colorInput = document.getElementById("colorInput");
     colorInput.value = "#000000";
     props.setColorValue("#000000");
-  },[]);
-
+  }, []);
 
   //input의 값이 변경될때마다 실행
   useEffect(() => {
@@ -28,19 +32,26 @@ export default function Main(props) {
       colorInput.style.backgroundColor = "white";
       colorInput.style.color = "black";
     }
+    // setPickerColor({ background: "#000" }); //picker의 초기값 => 이거 있으면 충돌나서 주석처리함
   }, [props.colorValue]);
 
-  
-  const mainStyle = {
-    transition: ".5s",
-  };
-
-  const testOn = e => {
-    if(e.key === "Enter"){
+  //input enter event
+  const inputEnter = (e) => {
+    if (e.key === "Enter") {
       generateClick();
     }
-  }
+  };
 
+  //picker의 값이 변경될때 실행
+  const handleChangeComplete = (color) => {
+    setPickerColor({ background: color.hex });
+    colorInput.style.backgroundColor = color.hex; //input영역을 입력한 색상코드로 변경
+    const inputValue = document.getElementById("colorInput");
+    inputValue.value = color.hex; //picker에서 선택한 컬러 input에도 반영
+    var textColor = Calculate.black_white_check(color.hex); //return: white or black
+    colorInput.style.color = textColor; //텍스트 색상 지정
+    props.setColorValue(color.hex);
+  };
 
   return (
     <main className="pb-12 mx-auto max-w-7xl px-4 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-25 flex justify-center items-center my-auto mb-32 h-full">
@@ -58,13 +69,13 @@ export default function Main(props) {
         <div className="text-center flex flex-col justify-center">
           <input
             onChange={onchangeColor}
-            className="mx-auto font-bold py-2 px-4 text-center mt-10 w-64 p-9 text-xl shadow rounded-3xl appearance-none border py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="mx-auto font-bold py-2 px-4 text-center mt-10 w-64 p-9 text-xl shadow rounded-3xl appearance-none border py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ease-in-out duration-500"
             type="text"
             id="colorInput"
-            style={mainStyle}
             maxLength="7"
-            onKeyDown={testOn}
+            onKeyDown={inputEnter}
           />
+
           <button
             onClick={() => {
               generateClick(); //index.js
@@ -73,6 +84,15 @@ export default function Main(props) {
           >
             Generate
           </button>
+
+          <div className="mt-5 flex justify-center relative">
+            <ChromePicker
+              color={pickerColor.background}
+              onChangeComplete={handleChangeComplete}
+              disableAlpha={true}
+            ></ChromePicker>
+          </div>
+          
         </div>
       </div>
     </main>

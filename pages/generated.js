@@ -55,7 +55,7 @@ function ResultComponents(props) {
     // color: textColor,
     top: "25%",
     textAlign: "center",
-    fontWeight: "bold",
+    fontWeight: "bold"
   }
 
   const resultRender = props.renderValue.map((result, index) => 
