@@ -3,6 +3,8 @@ import Generated from "../pages/generated";
 //정리
 //대비색, 보색, 대조색(opposite) - r,g,b에서 255에서 각 입력값을 뺀 값
 //유사색(similar) - h,s,l의 각 순서대로 (+6,+5,-9),(-6,+5,-9),(+12,+5,+3),(-12,+5,+3)을 연산한 값
+//음영(gradient) - h,s,l중 l만 10씩 증가 및 감소
+//삼각형(threedom) - h,s,l중 h만 120씩 증가(h는 max가 360)
 
 //white, black 구하기 (main > input의 text color 구분용)
 export function black_white_check(colorValue) {
@@ -45,7 +47,9 @@ export function generated(colorValue, resultValue, setResultValue) {
     resultValue,
     setResultValue
   ); //보색 구하기
-  result_hex += similar_color(r, g, b, colorValue, resultValue, setResultValue); //유사색 구하기
+  result_hex += similar_color(r, g, b, colorValue, resultValue, setResultValue); //유사색
+  result_hex += threedom_color(r, g, b, colorValue, resultValue, setResultValue); //삼각형
+  result_hex += gradient_color(r, g, b, colorValue, resultValue, setResultValue) //음영색
 
   return result_hex;
 }
@@ -251,6 +255,121 @@ export function opposite_color(
   ]);
 }
 
+export function gradient_color(
+  r,
+  g,
+  b,
+  colorValue,
+  resultValue,
+  setResultValue){
+
+  //입력받은 값을 hsl로 변환
+  const rgb_to_hsl_result = rgb_to_hsl(r, g, b);
+
+  //각 h, s, l값을 선언
+  let similar_h = rgb_to_hsl_result[0];
+  let similar_s = rgb_to_hsl_result[1];
+
+  let similar1_l;
+  let similar2_l;
+  let similar3_l;
+  let similar4_l;
+
+  if(rgb_to_hsl_result[2] > 50){
+    similar1_l = rgb_to_hsl_result[2]-10;
+    similar2_l = rgb_to_hsl_result[2]-20;
+    similar3_l = rgb_to_hsl_result[2]-30;
+    similar4_l = rgb_to_hsl_result[2]-40;
+  }else{
+    similar1_l = rgb_to_hsl_result[2]+10;
+    similar2_l = rgb_to_hsl_result[2]+20;
+    similar3_l = rgb_to_hsl_result[2]+30;
+    similar4_l = rgb_to_hsl_result[2]+40;
+  }
+
+  //hsl to rgb
+  const result_rgb1 = hsl_to_rgb(similar_h, similar_s, similar1_l);
+  const result_rgb2 = hsl_to_rgb(similar_h, similar_s, similar2_l);
+  const result_rgb3 = hsl_to_rgb(similar_h, similar_s, similar3_l);
+  const result_rgb4 = hsl_to_rgb(similar_h, similar_s, similar4_l);
+
+  //R,G,B를 합쳐 hex값으로 담는다
+  const result_hex1 = "#" + rgb_to_hex(result_rgb1[0], result_rgb1[1], result_rgb1[2]);
+  const result_hex2 = "#" + rgb_to_hex(result_rgb2[0], result_rgb2[1], result_rgb2[2]);
+  const result_hex3 = "#" + rgb_to_hex(result_rgb3[0], result_rgb3[1], result_rgb3[2]);
+  const result_hex4 = "#" + rgb_to_hex(result_rgb4[0], result_rgb4[1], result_rgb4[2]);
+
+
+  setResultValue((resultValue) => [
+    ...resultValue,
+    {
+      title: ["Gradient Color"],
+      value: [colorValue, result_hex1, result_hex2, result_hex3, result_hex4],
+    },
+  ]);
+}
+
+
+export function threedom_color(
+  r,
+  g,
+  b,
+  colorValue,
+  resultValue,
+  setResultValue){
+
+  //입력받은 값을 hsl로 변환
+  const rgb_to_hsl_result = rgb_to_hsl(r, g, b);
+
+  //각 h, s, l값을 선언
+  let threedom_s = rgb_to_hsl_result[1];
+  let threedom_l = rgb_to_hsl_result[2];
+
+  let threedom1_h;
+  let threedom2_h;
+
+  threedom1_h + 120;
+  let j;
+  if(threedom1_h > 360){
+    j = threedom1_h - 360 ;
+  }
+  alert(j)
+
+  //hue가 max인 360을 넘으면 0부터 반복
+  for(let i = 0; i < 120 + 1; i++){
+    threedom1_h = i + rgb_to_hsl_result[0];
+    if(threedom1_h > 360){
+      threedom1_h = 0;
+    }else{
+      
+    }
+  }
+  for(let i = 0; i < 240 + 1; i++){
+    // threedom2_h = i + rgb_to_hsl_result[0];
+    if(threedom2_h > 360){
+      threedom2_h = 0;
+    }
+  }
+
+  alert(threedom1_h)
+  
+  //hsl to rgb
+  const result_rgb1 = hsl_to_rgb(threedom1_h, threedom_s, threedom_l);
+  const result_rgb2 = hsl_to_rgb(threedom2_h, threedom_s, threedom_l);
+
+  //rgb to hex
+  const result_hex1 = "#" + rgb_to_hex(result_rgb1[0], result_rgb1[1], result_rgb1[2]);
+  const result_hex2 = "#" + rgb_to_hex(result_rgb2[0], result_rgb2[1], result_rgb2[2]);
+
+
+  setResultValue((resultValue) => [
+    ...resultValue,
+    {
+      title: ["Threedom"],
+      value: [colorValue, result_hex1, result_hex2],
+    },
+  ]);
+}
 
 
 
@@ -269,7 +388,16 @@ export function opposite_color(
 
 
 
-//convert들은 가시성때문에 떨어트려놈
+
+
+
+
+
+
+
+
+
+//convert들은 가시성때문에 이만치 떨어트려놈
 export function hsl_to_rgb(h, s, l) {
   s /= 100;
   l /= 100;

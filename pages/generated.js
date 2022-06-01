@@ -52,7 +52,7 @@ function ResultComponents(props) {
     left: "50%",
     transform: "translateX(-50%)",
     zIndex: "999",
-    // color: textColor,
+    color: textColor,
     top: "25%",
     textAlign: "center",
     fontWeight: "bold"
