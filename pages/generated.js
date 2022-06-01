@@ -71,7 +71,7 @@ function ResultComponents(props) {
             {index === 0 ? <div style={yourColor} className="text-lg break-words">Your Color</div> : null}
           </label>
           <input
-            className="mx-auto w-32 font-semibold py-2 px-4 text-center mt-3 p-9 text-lg shadow rounded-3xl appearance-none border text-gray-700 leading-tight focus:outline-none focus:shadow-outline ease-in-out duration-500"
+            className="mx-auto w-32 font-semibold py-2 px-4 text-center p-9 text-lg shadow rounded-3xl appearance-none border text-gray-700 leading-tight focus:outline-none focus:shadow-outline ease-in-out duration-500"
             type="text"
             value={result}
             id={"forColor"+index}

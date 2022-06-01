@@ -4,7 +4,7 @@ import Generated from "../pages/generated";
 //대비색, 보색, 대조색(opposite) - r,g,b에서 255에서 각 입력값을 뺀 값
 //유사색(similar) - h,s,l의 각 순서대로 (+6,+5,-9),(-6,+5,-9),(+12,+5,+3),(-12,+5,+3)을 연산한 값
 //음영(gradient) - h,s,l중 l만 10씩 증가 및 감소
-//삼각형(threedom) - h,s,l중 h만 120씩 증가(h는 max가 360)
+//삼각형(threedom) 혹은 삼각보색 - h,s,l중 h만 120씩 증가(h는 max가 360)
 
 //white, black 구하기 (main > input의 text color 구분용)
 export function black_white_check(colorValue) {
@@ -325,34 +325,16 @@ export function threedom_color(
   let threedom_s = rgb_to_hsl_result[1];
   let threedom_l = rgb_to_hsl_result[2];
 
-  let threedom1_h;
-  let threedom2_h;
-
-  threedom1_h + 120;
-  let j;
-  if(threedom1_h > 360){
-    j = threedom1_h - 360 ;
-  }
-  alert(j)
-
-  //hue가 max인 360을 넘으면 0부터 반복
-  for(let i = 0; i < 120 + 1; i++){
-    threedom1_h = i + rgb_to_hsl_result[0];
-    if(threedom1_h > 360){
-      threedom1_h = 0;
-    }else{
-      
-    }
-  }
-  for(let i = 0; i < 240 + 1; i++){
-    // threedom2_h = i + rgb_to_hsl_result[0];
-    if(threedom2_h > 360){
-      threedom2_h = 0;
-    }
-  }
-
-  alert(threedom1_h)
+  let threedom1_h = rgb_to_hsl_result[0] + 120;
+  let threedom2_h = rgb_to_hsl_result[0] + 240;
   
+  if(threedom1_h > 360){
+    threedom1_h = threedom1_h - 360 ;
+  }
+  if(threedom2_h > 360){
+    threedom2_h = threedom2_h - 360 ;
+  }
+
   //hsl to rgb
   const result_rgb1 = hsl_to_rgb(threedom1_h, threedom_s, threedom_l);
   const result_rgb2 = hsl_to_rgb(threedom2_h, threedom_s, threedom_l);
@@ -360,7 +342,6 @@ export function threedom_color(
   //rgb to hex
   const result_hex1 = "#" + rgb_to_hex(result_rgb1[0], result_rgb1[1], result_rgb1[2]);
   const result_hex2 = "#" + rgb_to_hex(result_rgb2[0], result_rgb2[1], result_rgb2[2]);
-
 
   setResultValue((resultValue) => [
     ...resultValue,
