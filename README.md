@@ -1,6 +1,6 @@
 # colorjo
 
-If you give me a color, I give it a color.
+Please enter a color to use for your design.
 
 ![Image Title](https://tympanus.net/codrops/wp-content/uploads/2021/12/GridZoom_feat.jpg)
 

@@ -1,7 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import * as Calculate from "../components/calculate";
 import { ChromePicker } from "react-color"; // React Color (input용도)
-import { AlphaPicker } from "react-color"; // React Color (input용도)
 
 export default function Main(props) {
   const { generateClick, propState } = props;
@@ -17,8 +16,9 @@ export default function Main(props) {
   //최초에만 실행
   useEffect(() => {
     const colorInput = document.getElementById("colorInput");
-    colorInput.value = "#000000";
-    props.setColorValue("#000000");
+    colorInput.value = "#eaddd1";
+    props.setColorValue("#eaddd1");
+    setPickerColor({ background: "#eaddd1" });
   }, []);
 
   //input의 값이 변경될때마다 실행

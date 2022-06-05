@@ -9,7 +9,7 @@ export default function Footer() {
           <span>Get connected with us on social networks:</span>
         </div>
         <div className="flex justify-center">
-          <a href="#!" className="mr-6 text-gray-600">
+          {/* <a href="#!" className="mr-6 text-gray-600">
             <svg
               aria-hidden="true"
               focusable="false"
@@ -25,8 +25,10 @@ export default function Footer() {
                 d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"
               ></path>
             </svg>
-          </a>
-          <a href="#!" className="mr-6 text-gray-600">
+          </a> */}
+
+
+          <a href="mailto:jds3567@gmail.com" target="_blank" rel="noreferrer" className="mr-6 text-gray-600">
             <svg
               aria-hidden="true"
               focusable="false"
@@ -43,7 +45,7 @@ export default function Footer() {
               ></path>
             </svg>
           </a>
-          <a href="#!" className="text-gray-600">
+          <a href="https://github.com/dongseob/colorjo" target="_blank" rel="noreferrer" className="text-gray-600">
             <svg
               aria-hidden="true"
               focusable="false"
