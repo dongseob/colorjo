@@ -75,7 +75,7 @@ export default function Home() {
 
       //generateClick()이 끝나기전 스크롤이동 실행
       window.scrollTo({ top: 300, behavior: "smooth" });
-    }, 300);
+    }, 500);
   };
 
   //resultValue의 동기 진행
