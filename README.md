@@ -17,9 +17,9 @@ Please enter a color to use for your design.
 
 ## Status
 
-[![Github All Releases](https://img.shields.io/github/languages/count/dongseob/seob )]()<!-- 사용언어 수 -->
-[![Github All Releases](https://img.shields.io/github/languages/top/dongseob/seob )]()<!-- 최다사용언어 -->
-[![Github All Releases](https://img.shields.io/github/downloads/dongseob/seob/total.svg)]()<!-- 레포 다운로드 수 -->
-[![Github All Releases](https://img.shields.io/github/repo-size/dongseob/seob)]()<!-- 레포 사이즈 -->
-[![Github All Releases](https://img.shields.io/github/commit-activity/m/dongseob/seob)]()<!-- 달에 몇번 커밋했는지 -->
-[![Github All Releases](https://img.shields.io/github/last-commit/dongseob/seob)]()<!-- 마지막커밋 날짜 -->
+[![Github All Releases](https://img.shields.io/github/languages/count/dongseob/colorjo )]()<!-- 사용언어 수 -->
+[![Github All Releases](https://img.shields.io/github/languages/top/dongseob/colorjo )]()<!-- 최다사용언어 -->
+[![Github All Releases](https://img.shields.io/github/downloads/dongseob/colorjo/total.svg)]()<!-- 레포 다운로드 수 -->
+[![Github All Releases](https://img.shields.io/github/repo-size/dongseob/colorjo)]()<!-- 레포 사이즈 -->
+[![Github All Releases](https://img.shields.io/github/commit-activity/m/dongseob/colorjo)]()<!-- 달에 몇번 커밋했는지 -->
+[![Github All Releases](https://img.shields.io/github/last-commit/dongseob/colorjo)]()<!-- 마지막커밋 날짜 -->
