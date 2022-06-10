@@ -1,5 +1,7 @@
 # colorjo
 
+## Content
+
 Please enter a color to use for your design.
 
 ![Image Title](/public/colorjo_readme.png)
