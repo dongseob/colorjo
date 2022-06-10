@@ -4,7 +4,6 @@ import { ChromePicker } from "react-color"; // React Color (input용도)
 
 export default function Main(props) {
   const { generateClick, propState } = props;
-  const [pickerShow, setPickerShow] = useState(false); //input click 시, color picker visible
   const [pickerColor, setPickerColor] = useState({background: '#000'});
 
   //input에 값입력 마다 setColorValue에 할당
@@ -70,7 +69,7 @@ export default function Main(props) {
         <div className="text-center flex flex-col justify-center">
           <input
             onChange={onchangeColor}
-            className="mx-auto font-bold py-2 px-4 text-center mt-10 w-64 p-9 text-xl shadow rounded-3xl appearance-none border py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ease-in-out duration-500"
+            className="mx-auto font-bold py-2 px-4 text-center mt-10 w-64 p-9 text-xl shadow rounded-3xl appearance-none border text-gray-700 leading-tight focus:outline-none focus:shadow-outline ease-in-out duration-500"
             type="text"
             id="colorInput"
             maxLength="7"

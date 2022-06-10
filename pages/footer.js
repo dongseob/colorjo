@@ -27,7 +27,7 @@ export default function Footer() {
             </svg>
           </a> */}
 
-
+          {/* mailto가 특정환경에서 동작안함 방법없음 */}
           <a href="mailto:jds3567@gmail.com" target="_blank" rel="noreferrer" className="mr-6 text-gray-600">
             <svg
               aria-hidden="true"

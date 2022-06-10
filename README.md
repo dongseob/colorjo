@@ -2,7 +2,7 @@
 
 Please enter a color to use for your design.
 
-![Image Title](https://tympanus.net/codrops/wp-content/uploads/2021/12/GridZoom_feat.jpg)
+![Image Title](/public/colorjo_readme.png)
 
 <p align="center">
   <a href="https://dongseob.github.io/out-of-the-blue/" target="_blank"><strong>Explore Page »</strong></a>

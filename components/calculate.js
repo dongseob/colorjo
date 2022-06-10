@@ -32,26 +32,31 @@ export function generated(colorValue, resultValue, setResultValue) {
   const rgb = result[0];
   const c = result[1];
 
-  let r = 0,
+  //rgb가 nan이면 return
+  if(isNaN(rgb)){
+    return "error";
+  }else{
+    let r = 0,
     g = 0,
     b = 0;
-  r = "0x" + colorValue[1] + colorValue[2]; // red 추출
-  g = "0x" + colorValue[3] + colorValue[4]; // green 추출
-  b = "0x" + colorValue[5] + colorValue[6]; // blue 추출
+    r = "0x" + colorValue[1] + colorValue[2]; // red 추출
+    g = "0x" + colorValue[3] + colorValue[4]; // green 추출
+    b = "0x" + colorValue[5] + colorValue[6]; // blue 추출
 
-  const result_hex = opposite_color(
-    r,
-    g,
-    b,
-    colorValue,
-    resultValue,
-    setResultValue
-  ); //보색 구하기
-  result_hex += similar_color(r, g, b, colorValue, resultValue, setResultValue); //유사색
-  result_hex += threedom_color(r, g, b, colorValue, resultValue, setResultValue); //삼각형
-  result_hex += gradient_color(r, g, b, colorValue, resultValue, setResultValue) //음영색
+    const result_hex = opposite_color(
+      r,
+      g,
+      b,
+      colorValue,
+      resultValue,
+      setResultValue
+    ); //보색 구하기
+    result_hex += similar_color(r, g, b, colorValue, resultValue, setResultValue); //유사색
+    result_hex += threedom_color(r, g, b, colorValue, resultValue, setResultValue); //삼각형
+    result_hex += gradient_color(r, g, b, colorValue, resultValue, setResultValue) //음영색
 
-  return result_hex;
+    return result_hex;
+  }
 }
 
 //HSL(hue, saturation, lightness)로 변환 후, 각 값 에서 -두개, +두개 도합 4가지 유사 색상 추출
@@ -351,6 +356,19 @@ export function threedom_color(
     },
   ]);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

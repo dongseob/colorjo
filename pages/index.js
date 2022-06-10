@@ -15,6 +15,7 @@ export default function Home() {
   const [colorValue, setColorValue] = useState(""); // 사용자가 입력한 헥스값
   const [resultValue, setResultValue] = useState([]);
 
+  //top button
   const handleFollow = () => {
     setScrollY(window.pageYOffset); // window 스크롤 값을 ScrollY에 저장
     if (scrollY > 300) {
@@ -24,6 +25,7 @@ export default function Home() {
     }
   };
 
+  //top button
   useEffect(() => {
     const watch = () => {
       window.addEventListener("scroll", handleFollow);
@@ -34,7 +36,7 @@ export default function Home() {
     };
   });
 
-  //topBtn click function
+  //top button click function
   const handleTop = () => {
     window.scrollTo({
       top: 0,
@@ -65,17 +67,24 @@ export default function Home() {
       return; 
     }
 
-    Calculate.generated(colorValue, resultValue, setResultValue);
+    const nanCheck = Calculate.generated(colorValue, resultValue, setResultValue);
 
-    setTimeout(function () {
+    //rgb가 nan이면 return
+    if(nanCheck == "error"){
+      alert(error_code);
+      return;
+    }
+    else{
       //좀더 자연스럽게 하려고 setTimeOut 추가
-      //generated 영역이 생성
-      const area = document.querySelector("#generatedArea");
-      area.style.display = "block";
+      setTimeout(function () {
+        //generated 영역이 생성
+        const area = document.querySelector("#generatedArea");
+        area.style.display = "block";
 
-      //generateClick()이 끝나기전 스크롤이동 실행
-      window.scrollTo({ top: 300, behavior: "smooth" });
-    }, 500);
+        //generateClick()이 끝나기전 스크롤이동 실행
+        window.scrollTo({ top: 300, behavior: "smooth" });
+      }, 500);
+    }
   };
 
   //resultValue의 동기 진행
