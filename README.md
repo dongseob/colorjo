@@ -8,7 +8,7 @@ Please enter a color to use for your design.
 ![Image Title](/public/colorjo_readme.png)
 
 <p align="center">
-  <a href="https://dongseob.github.io/out-of-the-blue/" target="_blank"><strong>Explore Page »</strong></a>
+  <a href="https://colorjo.vercel.app/" target="_blank"><strong>Explore Page »</strong></a>
 </p>
 
 <p align="center">
